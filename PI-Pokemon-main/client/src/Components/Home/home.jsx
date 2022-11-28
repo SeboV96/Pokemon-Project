@@ -8,6 +8,7 @@ import Card from '../cards/cards'
 import Paginado from '../Pagination/pagination'
 import SearchBar from '../SearchBar/searchBar'
 import Loading from '../loading/loading'
+import Footer from '../Footer/footer'
 import './homeCss.css'
 
 
@@ -152,7 +153,7 @@ export default function Home (){
                             id = {e.id}
                             name = {e.name[0].toUpperCase() + e.name.substring(1)}
                             img = {e.img}
-                            types = {'Types: ' + e.types.map(type => type[0].toUpperCase() + type.substring(1)).join(', ')}
+                            types = {e.types.map(type => type[0].toUpperCase() + type.substring(1)).join(', ')}
                             attack = {e.attack}
                             
                              
@@ -161,6 +162,7 @@ export default function Home (){
                         )
                     })}
               </div>
+            <Footer/>
             </div>
                 
             

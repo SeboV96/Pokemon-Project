@@ -21,29 +21,32 @@ export default function Details(){
     const detailState = useSelector((state) => state.details)
     console.log(detailState)
     return (
-        <div>
+        <div className='DetailContainer'>
     
-
+            
                
             {
                 Object.keys(detailState).length ?
             
             
             <div className='CardDetail'>
-                <h1>{detailState.name[0].toUpperCase() + detailState.name.substring(1)}</h1>
-            
-                <h3>Types: {detailState.types.map(poke => poke[0].toUpperCase() + poke.slice(1)+ ' ')}</h3>
-            
-                <img src = {detailState.img} alt='prueba' width = '200px' height='230px'/>
-            
-                 <h3>ID: <span className='id'>{detailState.id}</span></h3>
-                <h3>Hp: <span className='hp'>{detailState.hp}</span></h3>
-                <h3>Attack: <span className='attack'>{detailState.attack}</span></h3>
-                <h3>Defense: <span className='defense'>{detailState.defense}</span></h3>
-                <h3>Speed: <span className='speed'>{detailState.speed}</span></h3>
-                <h3>Height: <span className='height'>{detailState.height}</span></h3>
-                <h3>Weight: <span className='weight'>{detailState.weight}</span></h3>
-
+             <div className='background'>
+             <img className='DetailImg' src = {detailState.img} alt='prueba' width = '200px' height='230px'/>
+             </div>
+             <div className='DetailContentContainer'>
+             <h1 className='detail-Pokename'>{detailState.name[0].toUpperCase() + detailState.name.substring(1)}</h1>
+             <span className='detail-Poketipes'>{detailState.types.map(poke => poke[0].toUpperCase() + poke.slice(1)+ ' ')}</span>
+             <span className='detail-id'>#{detailState.id}</span>
+             <div className='detail-stats'>
+                <p>HP: {detailState.hp}</p>
+                <p>Attack: {detailState.attack}</p>
+                <p>Defense: {detailState.defense}</p>
+                <p>Speed: {detailState.speed}</p>
+                <p>Height: {detailState.height}</p>
+                <p>Weight: {detailState.weight}</p>
+             </div>
+             </div>
+               
                 </div>
             :<div><Loading/></div>
           

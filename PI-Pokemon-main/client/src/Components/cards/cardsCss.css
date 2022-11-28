@@ -1,33 +1,91 @@
-.Card{
-  display: inline-block;
-  border-style: solid;
-  border-width: 10px;
-  border-color: black;
-  border-radius: 0.5rem;
+*{
+  margin: 0px;
+}
+.rock {
+  background-color: rgb(148, 81, 81);
+}
+.ghost {
+  background-color: rgb(247, 247, 247);
+}
+.electric {
+  background-color: rgb(255, 255, 161);
+}
+.bug {
+  background-color: #F6D6A7;
+}
+.poison {
+  background-color: #e0a7f6;
+}
+.normal {
+  background-color: #F4F4F4;
+}
+.fairy {
+  background-color: rgba(255, 192, 203, 0.863);
+}
+.fire {
+  background-color: #FBE3DF;
+}
+.grass {
+  background-color:#E2F9E1;
+}
+.water {
+  background-color:#E0F1FD;
+}
 
-  background-color: rgba(255, 255, 255, 0.959);
-
-  height: 25rem;
-  width: 15rem;
-
-  margin: 4px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+.CardContainer{
+  background: linear-gradient(to right, #fad61f, #fad61f);
+  width: 350px;
+  height: auto;
+  margin: 10%;
+  padding: 10px;
+  border-radius: 10px;
   flex:auto;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-
-  text-align: center;
-
-}
-.attack{
-  color: black;
+  box-shadow: 0px 0px 10px black;
   
-
 }
 
-.name{
-  font: bold 90% monospace;
-  font-size:25px;
+
+
+.background{
+  text-align: center;
+  background: linear-gradient(to right, #6a5b0e, #504921);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.img{
+  width: 200px;
+  height: 200px;
+}
+
+.CardContentContainer{
+  background: linear-gradient(to right, #f5e593, #fff2af);
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.PokeName{
+  text-align: center;
+  font-size: 35px;
+  font-weight: lighter;
+  padding: 10px;
+  font-style:inherit;
+  font-weight: 300;
+  color: black;
+}
+
+.PokeTypes{
+  background-color: black;
+  padding: 7px;
+  color: white;
+  border-radius: 5px;
+  width: 100px;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: -98px;
 }
