@@ -1,36 +1,39 @@
-import React from 'react'
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { SearchPokemons } from '../../redux/actions/actions';
-import './searchBarCss.css'
-
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getPokemonName } from '../../redux/actions/actions';
+import style from './SearchBar.module.css'
 
 export default function SearchBar(){
     const dispatch = useDispatch()
-    const [currentSearch, setCurrentSearch] = useState('')
+    const [ name, setName ] = useState("")
 
-    function handlerImputSearch(ev){
-        ev.preventDefault()
-    setCurrentSearch(ev.target.value)
-    
+    function handleInputChange(e){
+        e.preventDefault();
+        setName(e.target.value.replaceAll(/^\s+/g, "").replaceAll(/\s+/g, " "))
     }
 
-    function handlerBotonSearch(ev){
-        ev.preventDefault()
-        if (currentSearch.length < 1) {
-            alert('Please write a Pokemon')
+    function handleSubmit(e){
+        e.preventDefault();
+        if(name !== ''){
+            dispatch(getPokemonName(name))
+            setName("")
         }
-        if (currentSearch.length !== 0 ){
-            dispatch(SearchPokemons(currentSearch))
-            setCurrentSearch ('')
-        }
-        setCurrentSearch ('')
-
     }
-    return (
-    <div className='SearchBar'>
-        <input className='Input' onChange={(ev) => handlerImputSearch(ev)} type= 'text' placeholder="Search..." value= {currentSearch}></input>
-        <button className='Button' onClick={(ev) => handlerBotonSearch(ev)} type='submit'>Search</button>
-    </div>
+
+    return(
+        <div className={style.searchBox}>
+            <form onSubmit={(e) => handleSubmit(e)}>
+                <input 
+                    className={style.searchTxt}
+                    type="text" 
+                    placeholder="Search Pokemon..."
+                    value = {name}
+                    onChange={(e) => handleInputChange(e)}
+                />
+                <button type="submit" className={style.searchBtn} style={{ outline: 'none' }}>
+                    <i className="fas fa-search" ></i>
+                </button>
+            </form>
+        </div>
     )
 }

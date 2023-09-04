@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}
+
+.pagina{
+    background-image: url('../../resources/fonditoPoke.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.return{
+    position: fixed;
+    left: 5%;
+    top: 20%;
+}
+
+.retbtn{
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    background-color: beige;
+    border:  2px solid black;
+    border-radius: 20px;
+
+    padding: 16px 32px;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    line-height: 1;
+
+    box-shadow: 0 2px 8px -1px #09113f;
+    
+    opacity: 100;
+    animation: showText 1s 1s linear forwards;
+    transition: all 0.5s ease;
+}
+.retbtn:hover{
+    box-shadow: 0 0px 0px 0 rgba(0, 40, 120, 0);
+    transform: translateY(-5px);
+}
+
+.img{
+    margin-top: 120px;
+}
+
+.back{
+    position: fixed;
+    left: 8%;
+    top: 4%;
+}
+
+.container{
+    background-color:beige;
+    border-radius: 20px;
+    box-shadow: 0 2px 5% rgba(0, 0, 0, 0.3);
+    width: 50rem;
+    max-width: 50%;
+    font-family:  'Poppins', sans-serif;
+    overflow-x: hidden;
+
+    padding-bottom: 4%;
+    position: relative;
+    margin-bottom: 0.5%;
+    margin-top: 0.5%;
+    margin-right: 5%;
+}
+
+.header{
+    background-color: #f7f7f7;
+    padding: 20px 40px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header h2{
+    margin: 0;
+}
+
+.formdiv{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.formdiv label{
+    display: flex;
+    margin-left: 5%;
+    margin-bottom: 5px;
+}
+
+.formdiv input{
+    border: 2px solid grey;
+    border-radius: 20px;
+    display: block;
+    width: 90%;
+    padding: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    margin-left: 2vw;
+    background-color: beige;
+}
+
+
+.formdiv i {
+    position: absolute;
+    top: 45px;
+    left: 92%
+}
+
+.formdiv p {
+    position: absolute;
+    top: 65%;
+    left: 5%;
+    font-size: 14px;
+    color: #e74c3c;
+}
+
+.container button{
+    background-color: #f7f7f7;
+    border: 2px solid grey;
+    border-radius: 20px;
+    color:black;
+    display: block;
+    font-family: inherit;
+    font-size: 18px;
+    padding: 15px;
+    width: 30%;
+    cursor: pointer;
+    margin-top: 4%;
+    margin-left: 35%;
+}
+
+.conteiner button:hover{
+    box-shadow: 0 0px 0px 0 rgba(0, 40, 120, 0);
+    transform: translateY(-5px);
+}
+
+.container .next{
+    background-color: rgb(157, 241, 161);
+    border: 2px solid grey;
+    color: rgb(0, 0, 0);
+    width: 30%;
+    margin-top: 5%;
+    margin-left: 35%;
+    transition: all 0.4s ease;
+
+}
+
+.container .next:hover{
+    background-color: grey;
+    border: 2px solid black;
+    color: rgb(255, 255, 255);
+}
+
+.container .previous{
+    background-color: rgb(241, 157, 157);
+    border: 2px solid grey;
+    color: rgb(0, 0, 0);
+    width: 30%;
+    margin-top: -5%;
+    margin-left: 5%;
+    transition: all 0.4s ease;
+}
+
+.container .previous:hover{
+    background-color: grey;
+    border: 2px solid black;
+    color: rgb(255, 255, 255);
+}
+
+.container .create{
+    background-color:  rgb(157, 241, 161);
+    border: 2px solid rgb(95, 95, 95);
+    color: rgb(95, 95, 95);
+    width: 30%;
+    margin-top: -5%;
+    margin-right: 5%;
+    transition: all 0.4s ease; 
+}
+.container .create:hover{
+    background-color: grey;
+    border: 2px solid black;
+    color: rgb(255, 255, 255); 
+}
+
+.choosetypes{
+    margin-top: 2%;
+    margin-left: 4%;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.typeserror{
+    position: absolute;
+    font-size: 15px;
+    display: flex;
+    bottom: -8%;
+    left: 4%;
+    color: #e74c3c
+}
+
+.containertypes{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: flex-start;
+    margin-left: 4%;
+    margin-bottom: 12%;
+    margin-top: 4%;
+}
+
+.containertypes label{
+    cursor: pointer;
+    margin-bottom: 4%;
+}
+
+.containertypes label input[type='checkbox']{
+    display: none;
+}
+
+.containertypes label:hover .circle {
+    filter: grayscale(0%) opacity(100%);
+}
+
+.containertypes label input[type='checkbox']:checked ~ .circle {
+    filter: grayscale(0%) opacity(95%);
+}
+
+
+.bytype{
+    display: flex;
+    align-items: center;
+    
+}
+
+.circle{
+    filter: grayscale(90%) opacity(40%) ;
+    height: 35px;
+    width: 35px;
+    border-radius: 35%;
+}
+
+
+/* Arrows from input number*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+

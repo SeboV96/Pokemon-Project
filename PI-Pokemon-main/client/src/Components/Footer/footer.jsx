@@ -1,5 +1,6 @@
 import React from "react";
 import './footerCss.css'
+import {FiLinkedin, FiGithub} from 'react-icons/fi'
 
 
 export default function Footer () {
@@ -7,8 +8,8 @@ export default function Footer () {
     return(
        <section className="footer-section">
         
-       <a href='https://github.com/SeboV96'> <img src="C:/Users/telet/Desktop/Pokemon_PI/PI-Pokemon-main/client/src/resources/github-logo.png" alt='github' className="gitimg" /></a>
-       <a href='https://www.linkedin.com/in/sebastian-villa-b8770b244/'> <img src="C:/Users/telet/Desktop/Pokemon_PI/PI-Pokemon-main/client/src/resources/linkedinimg.png" alt='linkedIn' className="linkedinimg" /></a>
+       <a href='https://github.com/SeboV96' target="_blank"><FiGithub/></a>
+       <a href='https://www.linkedin.com/in/sebastian-villa-b8770b244/' target="_blank"><FiLinkedin/></a>
 
        </section>
     )

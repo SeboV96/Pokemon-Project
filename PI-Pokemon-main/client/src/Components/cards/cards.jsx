@@ -1,41 +1,50 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './cardsCss.css'
+import React from 'react';
+import style from './Card.module.css'
+
+export default function Card({ name, types, image, id, weight, height}){
+
+    let sprite;
+    if(id >= 1 && id <= 100){
+        sprite = true
+    }
 
 
-export default function Card({name, img, types, attack, id, hp}){
-    // const colors = {
-    //     fire: '#FDDFDF',
-    //     grass: '#DEFDE0',
-    //     electric: '#FCF7DE',
-    //     water:'#DEF3FD',
-    //     ground:'#f4e7da',
-    //     rock:'#d5d5d4',
-    //     fairy:'#fceaff',
-    //     poison:'#98d7a5',
-    //     bug:'#f8d5a3',
-    //     dragon:'#97b3e6',
-    //     psychic: '#eaeda1',
-    //     flying:'#F5F5F5',
-    //     fighting: '#E6E0D4',
-    //     normal:'#F5F5F5'
-    // }
-    // Card.style.backgroundColor = colors
-    return (
-        <div className='CardContainer'>
-           <div className='pokemon-card'>
-           <div className='background'>
-                <img className='img' src={img} alt='prueba' width = '200px' height='230px'/>
+    return(
+        <div className={style.card}>
+            <span className={style.name}>{name.charAt(0).toUpperCase() + name.slice(1)}</span>
+            {
+                <img src={image} alt="Img not found" height="190px" className={style.img}/>
+            }
+            <span className={`${style.typetitle}`}>Types</span>
+            <div className={style.types}>
+                {
+                    types ? types.map( el => {
+                        return(
+                            <img src={`resources/types/${el}.png`} alt="Types" height="65px" key={el}/>
+                        )
+                    }
+                    ) :
+                    <span>Types not found</span>
+                }
             </div>
-           <div className='CardContentContainer'>
-             <h1 className='PokeName' ><Link to = {`/pokemons/${id}`}>{name}</Link></h1>
-            <span className='PokeTypes'>{types}</span>
-            <div className='pokemon-stats'>
-                <p>Attack Power: {attack}</p>
+            <span className={`${style.aboutitle}`}>About</span>
+            <div className={style.about}>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                    <div style={{display:'flex', flexDirection:'row'}}>
+                        <img src={'images/cards/weight.svg'} alt='Weight Icon'/>
+                        <span className={style.pokweight}>{weight / 10}kg</span>
+                    </div>
+                    <span className={style.weight}>Weight</span>
+                </div>
+                <div style={{display:'flex', flexDirection:'column', paddingLeft:'24%'}}>
+                    <div style={{display:'flex', flexDirection:'row'}}>
+                        <img src={'images/cards/height.svg'} alt='Height Icon'/>
+                        <span className={style.pokheight}>{height / 10}m</span>
+                    </div>
+                    <span className={style.height}>Height</span>    
+                </div>
             </div>
             
-            </div>
-           </div>
         </div>
     )
 }

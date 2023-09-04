@@ -1,121 +1,171 @@
 const initialState = {
-    pokemons: [],
+    pokemons : [],
     allPokemons: [],
     types: [],
-    details: [],
-
+    detail: []
 }
 
-export default function rootReducer(state = initialState, action){
-    switch (action.type){
-        
-        case 'GET_POKEMONS':
-            
+function rootReducer (state = initialState, action){
+    switch(action.type){
+        case "GET_POKEMONS":
             return {
                 ...state,
                 pokemons: action.payload,
                 allPokemons: action.payload
             }
-        case 'SEARCH_POKEMONS':
-            return {
-                ...state,
-                allPokemons: action.payload
-            }
-        case 'GET_TYPE':
-            return {
-                ...state,
-                types: action.payload
-            }
-        case 'EVENT_DETAIL':
-            return {
-                ...state,
-                details: action.payload
-            }
-        case 'FILTER_BY_TYPE':
-            let allPokemons = state.pokemons
-            let filterType = action.payload ? allPokemons.filter(poke => poke.types.includes(action.payload)) : allPokemons
-                action.payload === "All" ? state.allPokemons = state.pokemons
-                    : state.allPokemons = state.pokemons.filter(poke => poke.types.includes(action.payload))
-                if (filterType.length < 1) {alert('Type not found'); return {...state, allPokemons: allPokemons}}
-                return {
-                    ...state,
-                    allPokemons: state.allPokemons
 
+        case "RELOAD_POKEMONS":
+            const apiPokesSort = state.allPokemons.filter( el => !el.createdInDb).sort(function (a, b){
+                if(a.id > b.id){
+                    return 1;
                 }
-            
+                if(b.id > a.id){
+                    return -1;
+                }
+                return 0;
+            }) 
+            const dbPokesSort = state.allPokemons.filter( el => el.createdInDb).sort(function (a, b){
+                if(a.id > b.id){
+                    return 1;
+                }
+                if(b.id > a.id){
+                    return -1;
+                }
+                return 0;
+            }) 
+            let sortedArrayNormal = [...apiPokesSort, ...dbPokesSort]
 
-            case 'FILTER_BY_API_OR_DB':    
-            if (action.payload === "Api") state.allPokemons = state.pokemons.filter(poke => typeof poke.id === "number")
-            if (action.payload === "Db") state.allPokemons = state.pokemons.filter(poke => typeof poke.id === 'string')
-            if (action.payload === "All") state.allPokemons = state.pokemons
             return {
-                ...state, 
-                allPokemons: state.allPokemons,
+                ...state,
+                pokemons: sortedArrayNormal
+            }    
+        
+        case "GET_TYPES":
+            return {
+                ...state,
+                types: action.payload,
+            }
+                
+        case "POST_POKEMON":
+            return{
+                ...state
             }
         
-            case 'FILTER_BY_ASC_OR_DESC':
-                 
-                    const sortAZ = action.payload === "Asc" ? state.allPokemons.sort(function(a, b) {
-                    if(a.name > b.name){
-                        return 0
-                    }
-                    if(b.name > a.name) {
-                        return -1
-                    }
-                    return 0
-                }) :
-                state.allPokemons.sort(function(a, b) {
-                    if(a.name > b.name){
-                        return -1
-                    }
-                    if(b.name > a.name) {
-                        return 1
-                    }
-                    return 0
-                })  
+        case "GET_POKEMON_NAME":
+            return {
+                ...state,
+                pokemons: action.payload
+            }    
 
-                return {
-                    ...state,
-                    allPokemons: sortAZ,
-                }
-            case 'FILTER_BY_ATTACK':
-                action.payload === "Less" ? state.allPokemons.sort(function(a, b) {
-                    if(a.attack > b.attack){
-                        return 1
-                    }
-                    if(b.attack > a.attack) {
-                        return -1
-                    }
-                    return 0
-                }) :
-                state.allPokemons.sort(function(a, b) {
-                    if(a.attack > b.attack){
-                        return -1
-                    }
-                    if(b.attack > a.attack) {
-                        return 1
-                    }
-                    return 0
-                })
+        case "REMOVE_DETAILS":
+            return {
+                ...state,
+                detail: []
+            } 
 
-                return {
-                    ...state,
-                    allPokemons: state.allPokemons,
-                }
-               
-            case 'CREATE_POKEMON':
-                return {
-                    ...state,
-                }
-            case 'CLEAR_STATE':
-                return {
-                    ...state,
-                    details: {},
-                }
+        case "GET_DETAILS":
+            return {
+                ...state,
+                detail: action.payload
+            }  
+
+        case "FILTER_BY_TYPES":
+            const allPokemons = state.allPokemons
+            const statusFiltered = action.payload === "All" ? allPokemons : allPokemons.filter(el => el.types.includes(action.payload) )
             
-            default:
-                return state 
-    }
-    
+            return {
+                ...state,
+                pokemons: statusFiltered.length ? statusFiltered : [`${action.payload} Pokemons`]
+            }
 
+        case "FILTER_CREATED":
+            const allPokemons2 = state.allPokemons
+            const statusFiltered2 = action.payload === "Created" ? allPokemons2.filter(el => el.createdInDb) : allPokemons2.filter(el => !el.createdInDb) 
+
+            return {
+                ...state,
+                pokemons: action.payload === 'All' ? allPokemons2 : statusFiltered2.length ? statusFiltered2 : ['Pokemons created']
+            }
+
+        case "ORDER_BY_NAME_OR_STRENGH":
+            let sortedArray
+
+            if(action.payload === 'asc'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.name > b.name){
+                            return 1;
+                        }
+                        if(b.name > a.name){
+                            return -1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'desc'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.name > b.name){
+                            return -1;
+                        }
+                        if(b.name > a.name){
+                            return 1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'HAttack'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.attack > b.attack){
+                            return -1;
+                        }
+                        if(b.attack > a.attack){
+                            return 1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'LAttack'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.attack > b.attack){
+                            return 1;
+                        }
+                        if(b.attack > a.attack){
+                            return -1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'normal'){
+                const apiPokes = state.pokemons.filter( el => !el.createdInDb).sort(function (a, b){
+                    if(a.id > b.id){
+                        return 1;
+                    }
+                    if(b.id > a.id){
+                        return -1;
+                    }
+                    return 0;
+                }) 
+                const dbPokes = state.pokemons.filter( el => el.createdInDb).sort(function (a, b){
+                    if(a.id > b.id){
+                        return 1;
+                    }
+                    if(b.id > a.id){
+                        return -1;
+                    }
+                    return 0;
+                }) 
+                sortedArray = [...apiPokes, ...dbPokes]
+            }
+
+            return {
+                ...state,
+                pokemons: sortedArray
+            }  
+
+        default: 
+            return state    
+    }
 }
+
+
+
+export default rootReducer
