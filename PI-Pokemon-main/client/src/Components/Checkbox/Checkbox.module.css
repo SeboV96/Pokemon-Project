@@ -1,9 +1,7 @@
 .multiselect {
-    width: 200px;
-    margin-left: 4%;
-    margin-top: 4%;
+    width: 100%;
+    margin: 4% auto;
     cursor: pointer;
-    margin-bottom: 12%;
   }
   
   .selectBox {
@@ -14,9 +12,9 @@
     cursor: pointer;
     box-shadow: none;
     background: #e6e6e6;
-    width: 8%;
-    height: 4%;
-    font-size: 0.9em;
+    width: 100%;
+    height: auto;
+    font-size: 1em;
     padding-top: 1em;
     padding-right: 1.26em;
     padding-bottom: 1em;
@@ -47,7 +45,7 @@
     position: absolute;
     height: 20em;
     overflow-y: scroll;
-    width: 24%;
+    width: 100%;
     bottom: 110%;
   }
   
@@ -61,3 +59,9 @@
   .checkboxes label:hover {
     background-color: #b9b9b9;
   }
+
+  @media (max-width: 768px) {
+    .checkboxes {
+        width: 100%; 
+        bottom: 100%; 
+    }}

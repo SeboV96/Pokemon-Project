@@ -4,7 +4,7 @@ import { getPokemons, filterCreated, orderByNameOrStrengh, getTypes, removeDetai
 import { Link } from 'react-router-dom';
 import Card from '../cards/cards';
 import Paginado from '../Pagination/pagination';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../Navbar/Navbar.jsx';
 import random from '../../resources/random.png';
 import style from './Home.module.css';
 import pika from '../../resources/loadingPikachu.gif';
@@ -120,7 +120,7 @@ export default function Home(){
                 :
                 <div className={style.loading}> 
                     <img src={loading}alt="Loading.." width='250px'/>
-                    <p className={style.loadingtext}>Loading...</p>
+                    <p className={style.loadingtext}></p>
                 </div>
             }
             </div>

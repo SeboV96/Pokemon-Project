@@ -3,8 +3,9 @@
 .card {
     position: relative;
     min-height: 14em;
-    width: 320px;
-    height: 414px;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
     text-decoration: none;
     background-color: beige;
     border: 2px solid black;
@@ -29,6 +30,7 @@
     color: black;
     padding-left: 5%;
     padding-top: 4%;
+    text-align: center;
 }
 
 .img {
@@ -36,8 +38,9 @@
     margin:auto;
     grid-column: x0 / x2;
     grid-row: y1/y2;
-    max-width: 320px;
+    max-width: 100%;
     padding-top: 2%;
+    text-align: center;
 }  
 
 .typetitle{
@@ -56,6 +59,7 @@
     display: flex;
     justify-content: center;
     padding-top: 3%;
+    max-width: 100%;
 }
 
 .aboutitle{
@@ -186,4 +190,12 @@
 
 .shadow{
     color: #453F3A
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 90%; /* Cambia el ancho para pantallas más pequeñas */
+        max-width: none; /* Elimina el ancho máximo */
+        grid-template-rows: [y0] 30px [y1] 150px [y2] 26px [y3] 60px [y4] 24px [y5] 1fr [y6]; /* Ajusta las filas según sea necesario */
+    }
 }
