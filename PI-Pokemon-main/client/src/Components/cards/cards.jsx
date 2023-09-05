@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Card.module.css'
 
+
 export default function Card({ name, types, image, id, weight, height}){
 
     let sprite;
@@ -20,7 +21,7 @@ export default function Card({ name, types, image, id, weight, height}){
                 {
                     types ? types.map( el => {
                         return(
-                            <img src={`resources/types/${el}.png`} alt="Types" height="65px" key={el}/>
+                            <img src={`../../../types/${el}.png`} alt="Types" height="65px" key={el}/>
                         )
                     }
                     ) :
@@ -31,14 +32,14 @@ export default function Card({ name, types, image, id, weight, height}){
             <div className={style.about}>
                 <div style={{display:'flex', flexDirection:'column'}}>
                     <div style={{display:'flex', flexDirection:'row'}}>
-                        <img src={'images/cards/weight.svg'} alt='Weight Icon'/>
+                        <img src={`../../../cards/weight.svg`} alt='Weight Icon'/>
                         <span className={style.pokweight}>{weight / 10}kg</span>
                     </div>
                     <span className={style.weight}>Weight</span>
                 </div>
                 <div style={{display:'flex', flexDirection:'column', paddingLeft:'24%'}}>
                     <div style={{display:'flex', flexDirection:'row'}}>
-                        <img src={'images/cards/height.svg'} alt='Height Icon'/>
+                        <img src={'../../../cards/height.svg'} alt='Height Icon'/>
                         <span className={style.pokheight}>{height / 10}m</span>
                     </div>
                     <span className={style.height}>Height</span>    

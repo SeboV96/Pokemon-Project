@@ -8,6 +8,7 @@ import Navbar from '../Navbar/Navbar';
 import random from '../../resources/random.png';
 import style from './Home.module.css';
 import pika from '../../resources/loadingPikachu.gif';
+import loading from "../../resources/loading.gif"
 
 
 
@@ -118,7 +119,7 @@ export default function Home(){
                 </div>
                 :
                 <div className={style.loading}> 
-                    <img src='images/loading.gif'alt="Loading.." width='250px'/>
+                    <img src={loading}alt="Loading.." width='250px'/>
                     <p className={style.loadingtext}>Loading...</p>
                 </div>
             }

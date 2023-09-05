@@ -10,6 +10,7 @@ import weight from "../../resources/cards/weight.svg"
 import sword from '../../resources/cards/sword.png'
 import speed from '../../resources/cards/run.png'
 
+
 export default function Detail (props){
     
     const dispatch = useDispatch();
@@ -60,11 +61,11 @@ export default function Detail (props){
                         
                         <div className={style.types}>
                             {
-                                myPokemon[0].types ? myPokemon[0].types.map( el => {
+                                myPokemon[0].types ? myPokemon[0].types.map( el => {console.log(el)
                                     return(
-                                        <img src={`../../images/types/${el}.png`} alt="Types" height="160px" key={el}/>
-                                    )
-                                }
+                                        <img src={`../../../types/${el}.png`} alt={el} height="160px" key={el}/>
+                                    ) 
+                                    }
                                 ) :
                                 <span>Types not found</span>
                             }
@@ -87,7 +88,7 @@ export default function Detail (props){
                         </div>
                         <div className={style.bar}>
                             <div className={style.info}>
-                                <span><i className="fas fa-shield-alt"></i> Defense</span>
+                            <span><img src={shield} alt='Attack' height='16px' width='16px'/> Defense</span>
                             </div>
                             <div className={style.progress} style={{animationDelay:'0.2s'}}><span style={{width:myPokemon[0].defense > 100 ? '100%' : myPokemon[0].defense+'%'}} per={`${myPokemon[0].defense}`} className={style.defense}></span></div>  
                         </div>
@@ -99,13 +100,13 @@ export default function Detail (props){
                         </div>
                         <div className={style.bar}>
                             <div className={style.info}>
-                                <span><img src={'../../images/cards/weight.svg'} alt='Weight' height='16px' width='16px'/> Weight(Kg)</span>
+                                <span><img src={'../../../cards/weight.svg'} alt='Weight' height='16px' width='16px'/> Weight(Kg)</span>
                             </div>
                             <div className={style.progress} style={{animationDelay:'0.5s'}}><span style={{width:myPokemon[0].weight > 100 ? '100%' : myPokemon[0].weight +'%'}} per={`${(myPokemon[0].weight)/10}`} className={style.weight}></span></div>
                         </div>
                         <div className={style.bar}>
                             <div className={style.info}>
-                                <span><img src={'../../images/cards/height.svg'} alt='Height' height='16px' width='16px'/> Height(M)</span>
+                                <span><img src={'../../../cards/height.svg'} alt='Height' height='16px' width='16px'/> Height(M)</span>
                             </div>
                             <div className={style.progress} style={{animationDelay:'0.6s'}}><span style={{width:myPokemon[0].height > 100 ? '100%' : myPokemon[0].height +'%'}} per={`${(myPokemon[0].height)/10}`} className={style.height}></span></div>
                         </div>
