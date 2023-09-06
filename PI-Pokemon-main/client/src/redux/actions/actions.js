@@ -31,7 +31,7 @@ export function getTypes() {
 
 export function postPokemon(payload) {
   return async function (dispatch) {
-    const pokemon = await axios.post(`https://poke-back-end.onrender.com}/pokemons`, payload);
+    const pokemon = await axios.post(`https://poke-back-end.onrender.com/pokemons`, payload);
 
     return {
       type: "POST_POKEMON",
