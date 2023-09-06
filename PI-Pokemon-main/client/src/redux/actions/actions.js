@@ -1,9 +1,9 @@
 import axios from "axios";
-const DEPLOY = "https://poke-back-end.onrender.com";
+
 
 export function getPokemons() {
   return async function (dispatch) {
-    var json = await axios.get(`${DEPLOY}/pokemons`, {});
+    var json = await axios.get(`https://poke-back-end.onrender.com/pokemons`, {});
 
     return dispatch({
       type: "GET_POKEMONS",
@@ -20,7 +20,7 @@ export function reloadPokemons() {
 
 export function getTypes() {
   return async function (dispatch) {
-    var info = await axios.get(`${DEPLOY}/types`, {});
+    var info = await axios.get(`https://poke-back-end.onrender.com/types`, {});
 
     return dispatch({
       type: "GET_TYPES",
@@ -31,7 +31,7 @@ export function getTypes() {
 
 export function postPokemon(payload) {
   return async function (dispatch) {
-    const pokemon = await axios.post(`${DEPLOY}/pokemons`, payload);
+    const pokemon = await axios.post(`https://poke-back-end.onrender.com}/pokemons`, payload);
 
     return {
       type: "POST_POKEMON",
@@ -43,7 +43,7 @@ export function postPokemon(payload) {
 export function getPokemonName(name) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`${DEPLOY}/pokemons?name=` + name);
+      const json = await axios.get(`https://poke-back-end.onrender.com/pokemons?name=` + name);
       // console.log(json.data)
 
       return dispatch({
@@ -63,7 +63,7 @@ export function getPokemonName(name) {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`${DEPLOY}/pokemons/` + id);
+      let json = await axios.get(`https://poke-back-end.onrender.com/pokemons/` + id);
 
       return dispatch({
         type: "GET_DETAILS",
